@@ -19,6 +19,13 @@ public class TestSuit extends BaseTest{
     RegisteredUserCommunityPoleResultPage registeredUserCommunityPoleResultPage = new RegisteredUserCommunityPoleResultPage();
     RegisteredUserEmailAFriend registeredUserEmailAFriend =new RegisteredUserEmailAFriend();
     RegisteredUserEmailAFriendResultPage registeredUserEmailAFriendResultPage = new RegisteredUserEmailAFriendResultPage();
+    FbPage fbPage = new FbPage();
+    ViewNews viewNews = new ViewNews();
+    ViewNewsResultPage viewNewsResultPage = new ViewNewsResultPage();
+    BuildYourProduct buildYourProduct = new BuildYourProduct();
+    BuildYourProductShoppingCart buildYourProductShoppingCart = new BuildYourProductShoppingCart();
+    BuildYourProductPayment buildYourProductPayment = new BuildYourProductPayment();
+    BuildYourProductResultPage buildYourProductResultPage = new BuildYourProductResultPage();
 
     @Test       //Registration page
     public void verifyUserShouldBeAbleToRegistrationSuccessfully(){
@@ -49,10 +56,7 @@ public class TestSuit extends BaseTest{
         homePage.clickOnGoodButton();
         //click on VOTE-Polling button
         homePage.clickOnVoteButton();
-        //click on POOR-Polling button
-        //homePage.clickPoorButton();
-        //click on VOTE-Polling button
-        //homePage.clickOnVoteButton();
+
         communityPole.userVerifyCommunityPoleSuccessfully();
         communityPoleResultPage.verifyCommunityPoleSuccessfully();
     }
@@ -87,7 +91,46 @@ public class TestSuit extends BaseTest{
         registeredUserEmailAFriend.enterRegisteredDetails();
         homePage.clickOnProductButton();
         registeredUserEmailAFriendResultPage.verifyUserEmailAFriendSuccessfully();
+    }
+    @Test       //Products list on Home Page
+    public void verifyProductsListOnHomepageSuccessfully(){
+        homePage.printProductTitle();
+    }
+    @Test       //Search button Error
+    public void verifyErrorOnForSearchButton(){
+        homePage.searchButton();
+    }
+    @Test       //User verify Facebook button
+    public void verifyUserClickOnFbButtonSuccessfully(){
+        homePage.clickOnFbButton();
+        fbPage.verifyFbPage();
+    }
+    @Test       //click on Vote button without select any option
+    public void verifyUserClickOnVoteButtonWithoutSelectAnyOptionSuccessfully(){
+        homePage.clickOnVoteButton();
+    }
+    @Test       //Check products price according Currency
+    public void verifyUserShouldClickOnProductPriceAccordingSuccessfully(){
+        homePage.printOutCurrency();
+    }
+    @Test       //Check Search Function
+    // Functionality Work
+    public void verifyUserShouldAbleToSearchFunctionalitySuccessfully(){
+        homePage.searchFunctionality();
+    }
+    @Test       //Check News on Homepage and comment
+    public void verifyUserShouldAbleToNews(){
+        homePage.clickOnNewsTitle();
+        viewNews.enterLeaveYourComment();
+        viewNewsResultPage.verifyUserCommentSuccessfully();
+    }
+    @Test       //User check Build your own computer
+    public void verifyUserShouldAbleToBuildYourOwnComputerSuccessfully(){
+        homePage.clickOnBuildYourOwnComputer();
+        buildYourProduct.enterBuildYourProductDetails();
+        buildYourProductShoppingCart.enterShoppingCartDetails();
+        buildYourProductPayment.enterPaymentDetails();
+        buildYourProductResultPage.verifyUserBuildYourProductSuccessfully();
 
     }
-
 }
